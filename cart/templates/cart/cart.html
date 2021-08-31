@@ -1,0 +1,66 @@
+{% extends 'mainapp/base.html' %}
+{% block title %}
+Корзина
+{% endblock %}
+{% block section_c %}
+
+<div class="conteiner-xxl">
+  <h4 class="text-center mt-5 mb-2">Корзина</h4>
+  <hr>
+  <div class="row justify-content-center">
+
+    <div class="col-8">
+      <div class="py-5">
+      <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Наименование</th>
+            <th scope="col">Цена</th>
+            <th scope="col">Количество</th>
+            <th scope="col">Итог</th>
+            <th scope="col">#</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in  cart.products.all %}
+          <tr>
+            <th scope="row">{{ i.content_object.title }}</th>
+            <td>{{ i.product.price}} руб</td>
+            <td>
+              <form action="{% url 'items-cart' i.pk %}" method="POST">
+                {% csrf_token %}
+                <input type="number" name="items"  class='form-control' min="1" value="{{i.items }}" style="width: 100px">
+                <br>
+                <input type="submit" class="btn btn-primary" value="Обновить">
+              </form>
+
+             </td>
+            <td>{{ i.final_price }} руб</td>
+            <td><a  href="{% url 'remove-cart' pk=i.pk %}" class="btn btn-danger">X</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+        {% if not cart.final_price %}
+        <b>нет товара</b>
+        {% else %}
+        <a href="{% url 'order' cart.pk %}" class="btn btn-primary">Сформировать заказ</a>
+        {% endif %}
+        <h5 class="text-end">Итого: {% if not cart.final_price %}
+          0
+          {% else %}
+          {{ cart.final_price }}
+          {% endif %}
+          руб</h5>
+
+      </div>
+      <a href="{% url 'pyment'%}"  style="width: 300px" type="button" class="btn btn-info">История заказов</a>
+
+      </div>
+
+  </div>
+
+</div>
+
+<hr>
+{% endblock %}

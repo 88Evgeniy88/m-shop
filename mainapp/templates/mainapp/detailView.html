@@ -1,0 +1,41 @@
+{% extends 'mainapp/base.html' %}
+{% block title %}
+{{ item.category }}
+{% endblock %}
+
+{% block section_c %}
+<h4 class="text-center mt-5 mb-2">{{ item.category}}</h4>
+<div class="card mb-3" style="max-width: 1200px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{item.image.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+          <h5 class="card-title"><b>{{ item.title }}</b> <hr>Цена {{ item.price }}руб</h5>
+        <p class="card-text">{{ item.description }}</p>
+          {% if request.user.is_authenticated %}
+          {% if item.items == 0 %}
+        <h5 class="text-end mt-0 mb-0"><b>Нет в наличии</b></h5>
+          {% else %}
+          <h6 class="text-end mt-0 mb-0"><a href="{{ item.get_add_card }}" class="btn btn-primary">В корзину</a></h6>
+          {% endif %}
+          {% endif %}
+
+        {% if item.category.slug == 'noutbuki'%}
+          {% include 'mainapp/note_specification.html' %}
+        {% elif item.category.slug == 'televizory'%}
+          {% include 'mainapp/TV_specification.html' %}
+        {% elif item.category.slug == 'muzykalnye-centry'%}
+          {% include 'mainapp/myz_specification.html' %}
+        {% elif item.category.slug == 'holodilniki'%}
+          {% include 'mainapp/holod_specification.html' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+{%include 'mainapp/menu.html' %}
+
+{% endblock %}

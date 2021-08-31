@@ -1,0 +1,54 @@
+<p class="card-text"><small class="text-muted"><button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <b>подробнее...</b>
+                        </button>
+
+            <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                     <table class="table">
+                        <thead>
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">характеристики</th>
+
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Полный объем</th>
+                                      <td>{{ item.volume }}</td>
+
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Высота</th>
+                                      <td>{{ item.height }}</td>
+
+                                    </tr>
+                                     <tr>
+                                      <th scope="row">Ширина</th>
+                                      <td>{{ item.width }}</td>
+
+                                    </tr>
+                                     <tr>
+                                      <th scope="row">Количество отделеий в морозильной камере</th>
+                                      <td>{{ item.frozen_c }}</td>
+
+                                    </tr>
+
+                                    </tr>
+                                     <tr>
+                                      <th scope="row">No Frost</th>
+
+                                      <td>{% if item.no_frost %}
+                                          Есть
+                                        {% else %}
+                                          Нет
+                                          {% endif %}
+                                      </td>
+
+                                    </tr>
+                                  </tbody>
+                         </table>
+                     </div>
+            </div>
+          </small>
+          </p>

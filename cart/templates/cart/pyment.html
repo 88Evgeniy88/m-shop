@@ -1,0 +1,36 @@
+{% extends 'mainapp/base.html' %}
+{% block title %}
+Все заказы
+{% endblock %}
+{% block section_c %}
+<div class="conteiner-fluid">
+    <div class="text-center">
+
+<br>
+<br>
+
+{% for item in data %}
+
+    {% for i in item.cart.products.all %}
+            наименование: {{ i.content_object.title }}
+    <br>
+    количество: {{ i.items }} шт
+    <br>
+
+
+ {% endfor %}
+
+    Общая стоимость заказа: {{ item.price }} руб<p>
+    Дата: {{ item.order_date }}
+<br>
+{% if item.cart.products.all %}<br>
+<a href="{% url 'list-order' item.id %}" type="button" class="btn btn-primary">Подтвердить</a>
+        {% else %}
+        <b>заказ оплачен</b>
+{% endif %}
+<hr>
+{% endfor %}
+            </div>
+         </div>
+
+{% endblock %}

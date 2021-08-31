@@ -1,0 +1,22 @@
+{% extends 'mainapp/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+формирование заказа
+{% endblock %}
+
+{% block section_c %}
+<br>
+<div class='text-center'><h4>Заполните форму заказа</h4></div>
+<hr>
+<form method="post">
+  {% csrf_token %}
+  <div class="row justify-content-center">
+    <div class="col-3">
+          {{ form|crispy }}
+  <hr>
+  <button type="submit" class="btn btn-success" value="Оплатить">Оплатить</button>
+    </div>
+  </div>
+</form>
+<br>
+{% endblock %}

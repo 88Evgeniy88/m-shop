@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>{% block head_title %}{% endblock %}</title>
+
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="{% url 'index' %}">EDCONE</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Акции</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Бонусные карты</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Помощь</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">Обратная связь</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Как оформить заказ</a></li>
+                                <li><a class="dropdown-item" href="#!">Гарантия</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <a class="btn btn-outline-dark" href="{% url 'cart' %}">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">{% if request.user.is_authenticated and cart.products.count %}
+                                {{ cart.products.count }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            </span>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Shop for you</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Shopping in your style.....</p>
+                </div>
+            </div>
+        </header>
+  <body>
+<br>
+    {% block body %}
+
+    <div class="row justify-content-center">
+        <div class="col-8">
+<div class="card text-white bg-dark md-3" style="max-width: 19rem;">
+
+  <div class="card-body">
+
+    <div class="card-text">
+
+        {% if messages %}
+        <div>
+          <strong>Сообщение:</strong>
+          <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <div>
+          {% if user.is_authenticated %}
+          <strong>Меню:</strong>
+          <ul>
+
+            <li><a href="{% url 'account_email' %}">сменить почту</a></li>
+
+            {% endif %}
+          </ul>
+        </div>
+        {% block content %}
+        {% endblock %}
+        {% endblock %}
+        {% block extra_body %}
+        {% endblock %}
+    </div>
+    </div>
+    </div>
+      </div>
+    </div>
+  </div>
+<br>
+  <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+  </body>
+</html>

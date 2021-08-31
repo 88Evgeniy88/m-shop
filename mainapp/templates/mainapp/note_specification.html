@@ -1,0 +1,47 @@
+<p class="card-text"><small class="text-muted"><button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <b>подробнее...</b>
+                        </button>
+
+            <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                     <table class="table">
+     <thead>
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th scope="col">характеристики</th>
+
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Диагональ</th>
+                                      <td>{{ item.diagonal }}</td>
+
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Объем HDD</th>
+                                      <td>{{ item.hdd }}</td>
+
+                                    </tr>
+                                     <tr>
+                                      <th scope="row">Частота процессора</th>
+                                      <td>{{ item.processopr_freq }}</td>
+
+                                    </tr>
+                                     <tr>
+                                      <th scope="row">Память</th>
+                                      <td>{{ item.ram }}</td>
+
+                                    </tr>
+
+                                     <tr>
+                                      <th scope="row">Время работы</th>
+                                      <td>{{ item.time_work}}</td>
+
+                                    </tr>
+                                  </tbody>
+        </table>
+                     </div>
+            </div>
+          </small>
+          </p>
