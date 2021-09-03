@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_COOKIE_AGE = 100000
 
-SECRET_KEY = 'django-insecure-1t#+vnv+)-s71oq!bz-4%jjk4uws1cw0c-h^$lf_&6&i4+b3&@'
+SECRET_KEY = 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -112,7 +112,7 @@ USE_TZ = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "simili.common@gmail.com"
-EMAIL_HOST_PASSWORD = "atlas156"
+EMAIL_HOST_PASSWORD = 
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
